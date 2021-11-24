@@ -20,6 +20,9 @@ public class LoginDao {
         String pwd = null;
         try {
             ResultSet rs = stmt.executeQuery(sql);
+            if(rs==null){
+                Log.write("密码错误");
+            }
             while(rs.next()){
                 pwd = rs.getString("pwd");
             }
