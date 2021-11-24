@@ -61,7 +61,7 @@ public class AbsenceDao {
         Date date = absence.getDate();
         String agree= absence.getAgree();
         try {
-            int flag = stmt.executeUpdate(String.format("insert into absence (abs_id,date,reason,user_id,agree) values (%d,%tx,%s,%d,%s)"
+            int flag = stmt.executeUpdate(String.format("insert into absence (abs_id,date,reason,user_id,agree) values (%d,%tF,%s,%d,%s)"
                     ,abs_id,date,reason,user_id,agree));
             if(flag==0){
                 return false;
@@ -80,7 +80,7 @@ public class AbsenceDao {
         Date date = absence.getDate();
         String agree= absence.getAgree();
         try {
-            int flag = stmt.executeUpdate(String.format("update absence set abs_id=%d,date=%tx,reason=%s,user_id=%d,agree=%s"
+            int flag = stmt.executeUpdate(String.format("update absence set abs_id=%d,date=%tF,reason=%s,user_id=%d,agree=%s"
                     ,abs_id,date,reason,user_id,agree));
             if(flag==0){
                 return false;

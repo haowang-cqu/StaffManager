@@ -70,7 +70,7 @@ public class StaffDao {
         String pos = staff.getPos();
         String pwd = staff.getPwd();
         int dep_id = staff.getDep_id();
-        sql = String.format("update staff set name=%s,age=%d,gender=%s,data=%tx,salary=%d,pos=%s,pwd=%s,dep_id=%d where id=%d",
+        sql = String.format("update staff set name=%s,age=%d,gender=%s,data=%tF,salary=%d,pos=%s,pwd=%s,dep_id=%d where id=%d",
                 name,age,gender,date,salary,pos,pwd,dep_id,id);
         try {
             int flag = stmt.executeUpdate(sql);
@@ -94,7 +94,7 @@ public class StaffDao {
         String pos = staff.getPos();
         String pwd = staff.getPwd();
         int dep_id = staff.getDep_id();
-        sql = String.format("insert into staff (id,gender,name,age,date,salary,pos,pwd,dep_id) values (%d,%s,%s,%d,%tx,%d,%s,%s,%d)",
+        sql = String.format("insert into staff (id,gender,name,age,date,salary,pos,pwd,dep_id) values (%d,%s,%s,%d,%tF,%d,%s,%s,%d)",
                 id,gender,name,age,date,salary,pos,pwd,dep_id);
         try {
             int flag = stmt.executeUpdate(sql);
