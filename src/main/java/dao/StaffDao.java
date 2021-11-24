@@ -2,6 +2,7 @@ package dao;
 
 import bean.Staff;
 import utils.Driver;
+import utils.Log;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +40,9 @@ public class StaffDao {
         Staff staff=new Staff();
         try {
             ResultSet rs = stmt.executeQuery(sql);
+            if (rs==null){
+                Log.write("没有该员工");
+            }
             while(rs.next()){
                 staff.setName(rs.getString("name"));
                 staff.setAge(rs.getInt("age"));
@@ -69,7 +73,10 @@ public class StaffDao {
         sql = String.format("update staff set name=%s,age=%d,gender=%s,data=%tx,salary=%d,pos=%s,pwd=%s,dep_id=%d where id=%d",
                 name,age,gender,date,salary,pos,pwd,dep_id,id);
         try {
-            stmt.executeUpdate(sql);
+            int flag = stmt.executeUpdate(sql);
+            if(flag==0){
+                return false;
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -90,7 +97,10 @@ public class StaffDao {
         sql = String.format("insert into staff (id,gender,name,age,date,salary,pos,pwd,dep_id) values (%d,%s,%s,%d,%tx,%d,%s,%s,%d)",
                 id,gender,name,age,date,salary,pos,pwd,dep_id);
         try {
-            stmt.executeUpdate(sql);
+            int flag = stmt.executeUpdate(sql);
+            if(flag==0){
+                return false;
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -100,7 +110,10 @@ public class StaffDao {
         Statement stmt = Driver.getInstance().getStatement();
         String sql="delete from staff where id="+id;
         try {
-            stmt.executeUpdate(sql);
+            int flag = stmt.executeUpdate(sql);
+            if(flag==0){
+                return false;
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
