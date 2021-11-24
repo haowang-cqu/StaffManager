@@ -84,6 +84,7 @@ public class StaffDao {
         }
         return true;
     }
+
     public static boolean insertStaff(Staff staff){
         Statement stmt = Driver.getInstance().getStatement();
         String sql = "";

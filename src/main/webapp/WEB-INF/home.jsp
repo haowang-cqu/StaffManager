@@ -25,12 +25,15 @@
 <% if(isAdmin)  { %>
     <a href="/absences">假条管理</a>
     <a href="/staffs">员工管理</a>
+    <a href="/password">修改密码</a>
     <a href="/logout">退出登录</a>
 <% } else { %>
     <a href="/staff/absence">我的假条</a>
+    <a href="/password">修改密码</a>
     <a href="/logout">退出登录</a>
 <% } %>
 
+</body>
 <%@ include file="footer.jsp"%>
 <script>
     $(function () {
