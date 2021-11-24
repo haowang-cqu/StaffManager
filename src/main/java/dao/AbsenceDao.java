@@ -103,4 +103,25 @@ public class AbsenceDao {
         }
         return true;
     }
+
+    public static ArrayList<Absence> getAllAbusenceByuid(int user_id){
+        ArrayList<Absence> absences=new ArrayList<>();
+        Statement stmt = Driver.getInstance().getStatement();
+        try {
+            ResultSet rs = stmt.executeQuery("select * from absence where user_id="+user_id);
+            while (rs.next()){
+                Absence absence = new Absence();
+                absence.setAbs_id(rs.getInt("abs_id"));
+                absence.setDate(rs.getDate("date"));
+                absence.setReason(rs.getString("reason"));
+                absence.setUser_id(rs.getInt("user_id"));
+                absence.setAgree(rs.getString("agree"));
+                absences.add(absence);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return absences;
+    }
 }

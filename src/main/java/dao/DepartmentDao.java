@@ -1,5 +1,6 @@
 package dao;
 
+import bean.Absence;
 import bean.Department;
 import bean.Staff;
 import utils.Driver;
@@ -91,4 +92,5 @@ public class DepartmentDao {
         }
         return true;
     }
+
 }
