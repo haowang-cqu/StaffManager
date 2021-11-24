@@ -5,7 +5,7 @@
 <body>
 <h1>管理员登录</h1>
 
-<form method="post" action="staff/login">
+<form method="post" action="/staff/login">
     ID: <input type="text" name="id"> <br />
     Name: <input type="text" name="name"> <br />
     Password: <input type="password" name="password"> <br />
