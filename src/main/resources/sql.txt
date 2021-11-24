@@ -1,0 +1,71 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2021/11/24 15:09:28                          */
+/*==============================================================*/
+
+
+drop table if exists absence;
+
+drop table if exists administer;
+
+drop table if exists department;
+
+drop table if exists staff;
+
+/*==============================================================*/
+/* Table: absence                                               */
+/*==============================================================*/
+create table absence
+(
+   abs_id               int not null auto_increment,
+   date                 datetime,
+   reason               varchar(50),
+   user_id              int,
+   agree                varchar(5),
+   primary key (abs_id)
+);
+
+/*==============================================================*/
+/* Table: administer                                            */
+/*==============================================================*/
+create table administer
+(
+   id                   int not null auto_increment,
+   name                 varchar(20),
+   pwd                  varchar(30),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: deptartment                                           */
+/*==============================================================*/
+create table deptartment
+(
+   dep_id               int not null auto_increment,
+   dep_name             varchar(20),
+   primary key (dep_id)
+);
+
+/*==============================================================*/
+/* Table: staff                                                 */
+/*==============================================================*/
+create table staff
+(
+   id                   int not null auto_increment,
+   gender               varchar(2),
+   name                 varchar(20),
+   age                  int,
+   date                 date,
+   salary               int,
+   pos                  varchar(20),
+   pwd                  varchar(30),
+   dep_id               int,
+   primary key (id)
+);
+
+alter table absence add constraint FK_请假条员工外键 foreign key (user_id)
+      references staff (id) on delete restrict on update restrict;
+
+alter table staff add constraint FK_部门外键 foreign key (dep_id)
+      references deptartment (dep_id) on delete restrict on update restrict;
+
