@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DepartmentDao {
-    public static ArrayList<Department> getAllDepartmentDao(){
+    public static ArrayList<Department> getAllDepartment(){
         ArrayList<Department> departments=new ArrayList<>();
         Statement stmt = Driver.getInstance().getStatement();
         try {

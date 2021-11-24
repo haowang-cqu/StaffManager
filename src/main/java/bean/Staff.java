@@ -84,4 +84,19 @@ public class Staff {
     public void setDep_id(int dep_id) {
         this.dep_id = dep_id;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "id=" + id +
+                ", gender='" + gender + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", date=" + date +
+                ", salary=" + salary +
+                ", pos='" + pos + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", dep_id=" + dep_id +
+                '}';
+    }
 }

@@ -18,6 +18,7 @@ public class StaffDao {
             ResultSet rs = stmt.executeQuery("select * from staff");
             while (rs.next()){
                 Staff staff=new Staff();
+                staff.setId(rs.getInt("id"));
                 staff.setName(rs.getString("name"));
                 staff.setAge(rs.getInt("age"));
                 staff.setGender(rs.getString("gender"));
@@ -44,6 +45,7 @@ public class StaffDao {
                 Log.write("没有该员工");
             }
             while(rs.next()){
+                staff.setId(rs.getInt("id"));
                 staff.setName(rs.getString("name"));
                 staff.setAge(rs.getInt("age"));
                 staff.setGender(rs.getString("gender"));
@@ -70,7 +72,7 @@ public class StaffDao {
         String pos = staff.getPos();
         String pwd = staff.getPwd();
         int dep_id = staff.getDep_id();
-        sql = String.format("update staff set name=%s,age=%d,gender=%s,data=%tF,salary=%d,pos=%s,pwd=%s,dep_id=%d where id=%d",
+        sql = String.format("update staff set name=\"%s\",age=%d,gender=\"%s\",date=\"%tF\",salary=%d,pos=\"%s\",pwd=\"%s\",dep_id=%d where id=%d",
                 name,age,gender,date,salary,pos,pwd,dep_id,id);
         try {
             int flag = stmt.executeUpdate(sql);
@@ -85,7 +87,6 @@ public class StaffDao {
     public static boolean insertStaff(Staff staff){
         Statement stmt = Driver.getInstance().getStatement();
         String sql = "";
-        int id = staff.getId();
         String name = staff.getName();
         int age = staff.getAge();
         String gender = staff.getGender();
@@ -94,8 +95,9 @@ public class StaffDao {
         String pos = staff.getPos();
         String pwd = staff.getPwd();
         int dep_id = staff.getDep_id();
-        sql = String.format("insert into staff (id,gender,name,age,date,salary,pos,pwd,dep_id) values (%d,%s,%s,%d,%tF,%d,%s,%s,%d)",
-                id,gender,name,age,date,salary,pos,pwd,dep_id);
+        sql = String.format("insert into staff (gender,name,age,date,salary,pos,pwd,dep_id) values (\"%s\",\"%s\",%d,\"%tF\",%d,\"%s\",\"%s\",%d)",
+                gender,name,age,date,salary,pos,pwd,dep_id);
+        Log.write(sql);
         try {
             int flag = stmt.executeUpdate(sql);
             if(flag==0){
@@ -106,6 +108,7 @@ public class StaffDao {
         }
         return true;
     }
+
     public static boolean deleteStaff(int id){
         Statement stmt = Driver.getInstance().getStatement();
         String sql="delete from staff where id="+id;

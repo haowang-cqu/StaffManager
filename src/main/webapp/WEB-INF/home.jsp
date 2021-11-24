@@ -24,7 +24,7 @@
 
 <% if(isAdmin)  { %>
     <a href="#">假条管理</a>
-    <a href="#">员工管理</a>
+    <a href="/staffs">员工管理</a>
     <a href="/logout">退出登录</a>
 <% } else { %>
     <a href="#">我的假条</a>
