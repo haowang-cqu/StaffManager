@@ -28,7 +28,7 @@ public class StaffLogin extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
 
-        if (LoginDao.doStaffLogin(id, password)) {
+        if (LoginDao.doLogin(id, password, false)) {
             Log.write("DEBUG: " + id + " login");
             HttpSession session = req.getSession();
             session.setAttribute("id", id);
