@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
             req.getRequestDispatcher("/home").forward(req, resp);
         }
         else {
-            req.getRequestDispatcher("/staff/login").forward(req, resp);
+            req.getRequestDispatcher("/").forward(req, resp);
         }
     }
 }

@@ -8,6 +8,8 @@
 
 <body>
 <h1>员工管理</h1>
+<a href="/home">回到首页</a>
+<a href="/logout">退出登录</a>
 <a href="/staffs?do=add">添加员工</a>
 <table border="1">
     <thead>

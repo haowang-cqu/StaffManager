@@ -61,13 +61,13 @@ public class AbsenceDao {
         Date date = absence.getDate();
         String agree= absence.getAgree();
         try {
-            int flag = stmt.executeUpdate(String.format("insert into absence (abs_id,date,reason,user_id,agree) values (%d,%tF,%s,%d,%s)"
+            int flag = stmt.executeUpdate(String.format("insert into absence (abs_id,date,reason,user_id,agree) values (%d,\"%tF\",\"%s\",%d,\"%s\")"
                     ,abs_id,date,reason,user_id,agree));
             if(flag==0){
                 return false;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return true;
     }
@@ -80,13 +80,12 @@ public class AbsenceDao {
         Date date = absence.getDate();
         String agree= absence.getAgree();
         try {
-            int flag = stmt.executeUpdate(String.format("update absence set abs_id=%d,date=%tF,reason=%s,user_id=%d,agree=%s"
-                    ,abs_id,date,reason,user_id,agree));
+            int flag = stmt.executeUpdate(String.format("update absence set date=\"%tF\",reason=\"%s\",user_id=%d,agree=\"%s\" where abs_id=%d" ,date,reason,user_id,agree, abs_id));
             if(flag==0){
                 return false;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return true;
     }
@@ -98,8 +97,8 @@ public class AbsenceDao {
             if(flag==0){
                 return false;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return true;
     }

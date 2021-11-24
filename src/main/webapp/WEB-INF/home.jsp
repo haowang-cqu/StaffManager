@@ -23,11 +23,11 @@
 <h1>欢迎您，<%= name %>！</h1>
 
 <% if(isAdmin)  { %>
-    <a href="#">假条管理</a>
+    <a href="/absences">假条管理</a>
     <a href="/staffs">员工管理</a>
     <a href="/logout">退出登录</a>
 <% } else { %>
-    <a href="#">我的假条</a>
+    <a href="/staff/absence">我的假条</a>
     <a href="/logout">退出登录</a>
 <% } %>
 
