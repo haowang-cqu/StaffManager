@@ -11,12 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/staff/login")
-public class StaffLogin extends HttpServlet {
+@WebServlet(urlPatterns = "/login")
+public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Log.write("Request login page");
-        req.getRequestDispatcher("/WEB-INF/staff_login.jsp").forward(req, resp);
+        String admin = req.getParameter("admin");
+        if ("1".equals(admin)) {
+            req.setAttribute("admin", true);
+        } else {
+            req.setAttribute("admin", false);
+        }
+        req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -24,19 +29,27 @@ public class StaffLogin extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+        String admin = req.getParameter("admin");
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-
-        if (LoginDao.doLogin(id, password, false)) {
-            Log.write("DEBUG: " + id + " login");
+        // 管理员登录
+        if ("1".equals(admin) && LoginDao.doLogin(id, password, true)) {
             HttpSession session = req.getSession();
+            session.setAttribute("admin", true);
             session.setAttribute("id", id);
             session.setAttribute("name", name);
-            req.getRequestDispatcher("/staff/home").forward(req, resp);
-        } else {
-            Log.write("DEBUG: 用户名或密码错误!");
-            req.setAttribute("error", "用户名或密码错误");
+            req.getRequestDispatcher("/home").forward(req, resp);
+        }
+        // 普通用户登录
+        else if (LoginDao.doLogin(id, password, false)) {
+            HttpSession session = req.getSession();
+            session.setAttribute("admin", false);
+            session.setAttribute("id", id);
+            session.setAttribute("name", name);
+            req.getRequestDispatcher("/home").forward(req, resp);
+        }
+        else {
             req.getRequestDispatcher("/staff/login").forward(req, resp);
         }
     }
