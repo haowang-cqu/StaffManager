@@ -1,12 +1,65 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<%@ include file="WEB-INF/header.jsp"%>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-<body>
-<h2>欢迎来到企业员工管理系统</h2>
-<a href="/login?admin=0">员工登录</a>
-<a href="/login?admin=1">管理员登录</a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>登录</title>
+</head>
+
+<body class="container">
+<h1 style="text-align: center; margin-bottom: 20px">欢迎来到企业员工管理系统</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        登录
+    </div>
+    <div class="panel-body">
+        <form method="post" action="/login" class="form-horizontal">
+            <div class="form-group">
+                <label for="inputID" class="col-sm-1 control-label">工号</label>
+                <div class="col-sm-11">
+                    <input name="id" type="text" class="form-control" id="inputID">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputName" class="col-sm-1 control-label">姓名</label>
+                <div class="col-sm-11">
+                    <input name="name" type="text" class="form-control" id="inputName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-1 control-label">密码</label>
+                <div class="col-sm-11">
+                    <input name="password" type="password" class="form-control" id="inputPassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="roleSelect" class="col-sm-1 control-label">角色</label>
+                <div class="col-sm-11">
+                    <select name="admin" id="roleSelect" class="form-control">
+                        <option value="0">员工</option>
+                        <option value="1">管理员</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
 </body>
 
-<%@ include file="WEB-INF/footer.jsp"%>
 </html>

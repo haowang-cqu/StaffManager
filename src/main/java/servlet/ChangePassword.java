@@ -14,21 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
-import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/password")
 public class ChangePassword extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        if (session.getAttribute("id") != null) {
-            req.getRequestDispatcher("/WEB-INF/password.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect("/");
-        }
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -43,9 +31,9 @@ public class ChangePassword extends HttpServlet {
                 staff.setPwd(newPassword);
                 StaffDao.updateStaff(staff);
                 session.invalidate();
-                resp.sendRedirect("/login?admin=0");
+                resp.sendRedirect("/");
             } else {
-                resp.sendRedirect("/password?error=1");
+                resp.sendRedirect("/staff");
             }
         }
         else if (session.getAttribute("id") != null && (boolean) session.getAttribute("admin")) {
@@ -55,9 +43,9 @@ public class ChangePassword extends HttpServlet {
                 admin.setPwd(newPassword);
                 AdministratorDao.updateAdministrator(admin);
                 session.invalidate();
-                resp.sendRedirect("/login?admin=1");
+                resp.sendRedirect("/");
             } else {
-                resp.sendRedirect("/password?error=1");
+                resp.sendRedirect("/admin");
             }
         }
         else {

@@ -1,7 +1,6 @@
 package servlet;
 
 import dao.LoginDao;
-import utils.Log;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,17 +12,6 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/login")
 public class Login extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String admin = req.getParameter("admin");
-        if ("1".equals(admin)) {
-            req.setAttribute("admin", true);
-        } else {
-            req.setAttribute("admin", false);
-        }
-        req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -39,7 +27,7 @@ public class Login extends HttpServlet {
             session.setAttribute("admin", true);
             session.setAttribute("id", id);
             session.setAttribute("name", name);
-            req.getRequestDispatcher("/home").forward(req, resp);
+            resp.sendRedirect("/admin");
         }
         // 普通用户登录
         else if (LoginDao.doLogin(id, password, false)) {
@@ -47,7 +35,7 @@ public class Login extends HttpServlet {
             session.setAttribute("admin", false);
             session.setAttribute("id", id);
             session.setAttribute("name", name);
-            req.getRequestDispatcher("/home").forward(req, resp);
+            resp.sendRedirect("/staff");
         }
         else {
             req.getRequestDispatcher("/").forward(req, resp);
