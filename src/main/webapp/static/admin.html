@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>管理员主页</title>
+</head>
+
+<body class="container">
+    <h1 style="text-align: center; margin-bottom: 20px">欢迎您，张建国（管理员）！</h1>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            员工管理
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>工号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>入职日期</th>
+                        <th>部门</th>
+                        <th>职位</th>
+                        <th>工资</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>20180001</td>
+                        <td>王国庆</td>
+                        <td>男</td>
+                        <td>28</td>
+                        <td>2021-10-28</td>
+                        <td>后勤</td>
+                        <td>组长</td>
+                        <td>8000元</td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-xs">修改</a>
+                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>20180001</td>
+                        <td>王国庆</td>
+                        <td>男</td>
+                        <td>28</td>
+                        <td>2021-10-28</td>
+                        <td>后勤</td>
+                        <td>组长</td>
+                        <td>8000元</td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-xs">修改</a>
+                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align:center;">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#newStaffModal">添加新员工</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            假条管理
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>员工</th>
+                        <th>日期</th>
+                        <th>缘由</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>王国庆</td>
+                        <td>2021-11-20</td>
+                        <td>想给自己放个假</td>
+                        <td>驳回</td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-xs">批准</a>
+                            <a href="#" class="btn btn-danger btn-xs">驳回</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>王国庆</td>
+                        <td>2021-11-22</td>
+                        <td>我好像生病了</td>
+                        <td>驳回</td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-xs">批准</a>
+                            <a href="#" class="btn btn-danger btn-xs">驳回</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>王国庆</td>
+                        <td>2021-11-28</td>
+                        <td>给我放假！再驳回就辞职！</td>
+                        <td>批准</td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-xs">批准</a>
+                            <a href="#" class="btn btn-danger btn-xs">驳回</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            修改密码
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="oldPassword" class="col-sm-1 control-label">旧密码</label>
+                    <div class="col-sm-11">
+                        <input type="password" class="form-control" id="oldPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword" class="col-sm-1 control-label">新密码</label>
+                    <div class="col-sm-11">
+                        <input type="password" class="form-control" id="newPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="repeatPassword" class="col-sm-1 control-label">确认</label>
+                    <div class="col-sm-11">
+                        <input type="password" class="form-control" id="repeatPassword">
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newStaffModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">添加员工</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="newStaffForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="staffName" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="staffName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffGender" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10">
+                                <select id="staffGender" class="form-control">
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffAge" class="col-sm-2 control-label">年龄</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="staffAge">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffDate" class="col-sm-2 control-label">入职时间</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="staffDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffDept" class="col-sm-2 control-label">部门</label>
+                            <div class="col-sm-10">
+                                <select id="staffDept" class="form-control">
+                                    <option>后勤部</option>
+                                    <option>财务部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffPos" class="col-sm-2 control-label">职位</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="staffPos">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffSalary" class="col-sm-2 control-label">工资</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="staffSalary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" form="newStaffForm">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            // $("#modal").modal('show');
+        });
+    </script>
+</body>
+
+</html>
